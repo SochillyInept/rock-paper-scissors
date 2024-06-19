@@ -10,3 +10,27 @@ function getComputerChoice(){
     (choiceCalc() > 6) ? choice = "Paper" : choice = "Scissors";
     return choice;
 }
+
+
+// Function to capitalize text
+
+let capitalize = function(text){
+    let firstLetter = text.charAt(0);
+    let otherLetters = text.slice(1);
+    return firstLetter.toUpperCase() + otherLetters.toLowerCase();
+}
+
+
+// Get human choice
+
+function getHumanChoice(){
+    let choice = prompt("Rock, Paper, or Scissors?");
+    let action = choice.toLocaleLowerCase();
+
+    if(action == "rock" || action == "paper" || action == "scissors"){
+        alert(`You've chosen ${capitalize(action)}.`)
+        return capitalize(action);
+    }
+
+    else {alert("Hmmm... That was not a valid choice.")}
+}
