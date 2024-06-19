@@ -14,7 +14,7 @@ function getComputerChoice(){
 
 // Function to capitalize text
 
-let capitalize = function(text){
+function capitalize(text){
     let firstLetter = text.charAt(0);
     let otherLetters = text.slice(1);
     return firstLetter.toUpperCase() + otherLetters.toLowerCase();
