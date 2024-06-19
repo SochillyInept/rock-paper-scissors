@@ -54,8 +54,11 @@ function playerWinsif(){
     } else if (computerChoice == "scissors" && humanChoice == "rock"){
         console.log(`Player wins! ${capitalize(humanChoice)} beats ${capitalize(computerChoice)}.`)
         humanScore += 1;
-    } else {
-        console.log(`Nooo Player lost! ${capitalize(computerChoice)} beats ${capitalize(humanChoice)}.`)
+    } else if (computerChoice === humanChoice){
+        console.log(`Draw! Player chose ${capitalize(humanChoice)} and computer chose ${capitalize(computerChoice)}. `)
+    } 
+    else {
+        console.log(`Nooo Player lost! ${capitalize(humanChoice)} loses against ${capitalize(computerChoice)}.`)
         computerScore += 1;
     }
 }
