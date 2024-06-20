@@ -25,9 +25,11 @@ function capitalize(text){
 
 function getHumanChoice(){
     let choice = prompt("Rock, Paper, or Scissors?");
-    let action = choice.toLocaleLowerCase();
+    let action = choice;
 
-    if(action == "rock" || action == "paper" || action == "scissors"){
+    if (action == null){
+        return; 
+    } else if(action.toLowerCase() == "rock" || action.toLowerCase() == "paper" || action.toLowerCase() == "scissors"){
         alert(`You've chosen ${capitalize(action)}.`)
         return action;
     }
@@ -56,16 +58,25 @@ function playerWinsif(){
         humanScore += 1;
     } else if (computerChoice === humanChoice){
         console.log(`Draw! Player chose ${capitalize(humanChoice)} and computer chose ${capitalize(computerChoice)}. `)
-    } 
+    } else if (humanChoice == null){
+        return;
+    }
     else {
         console.log(`Nooo Player lost! ${capitalize(humanChoice)} loses against ${capitalize(computerChoice)}.`)
         computerScore += 1;
     }
 }
 
+
+//Function to play game
+
 function playGame(){
     for (let i = 0; i < 4; i++){
-        if (humanScore == 3) {
+        let terminateGame = endGame();
+        if (terminateGame == true){
+            console.log("Game Terminated")
+            break;
+        } else if (humanScore == 3) {
             console.log("Congrats Player Wins the best of 5!");
             break;
         } else if (computerScore == 3){
@@ -76,5 +87,14 @@ function playGame(){
             playerWinsif()
         }
 
+    }
+}
+
+// If you hit  cancel the option it does not go to the else statement it will make choice null making action null, making humanChoice null. The issue is that I try to capitalize the outputs and .toUpperCase and similar things on a null object is a type error. So I going to create an endGame function for this
+function endGame(){
+    let endGame = getHumanChoice;
+
+    if (endGame == null){
+        return true;
     }
 }
