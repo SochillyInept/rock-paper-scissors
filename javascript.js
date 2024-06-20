@@ -36,7 +36,10 @@ function getHumanChoice(){
         return action;
     }
 
-    else {alert("Hmmm... That was not a valid choice.")}
+    else {
+        alert("Hmmm... That was not a valid choice.")
+        return action = null;
+    }
 }
 
 //Score variables
@@ -77,6 +80,7 @@ function playGame(){
         let terminateGame = endGame();
         if (terminateGame == true){
             console.log("Game Terminated")
+            action = undefined;
             break;
         } else if (humanScore == 3) {
             console.log("Congrats Player Wins the best of 5!");
