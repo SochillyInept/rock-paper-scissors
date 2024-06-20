@@ -62,3 +62,19 @@ function playerWinsif(){
         computerScore += 1;
     }
 }
+
+function playGame(){
+    for (let i = 0; i < 4; i++){
+        if (humanScore == 3) {
+            console.log("Congrats Player Wins the best of 5!");
+            break;
+        } else if (computerScore == 3){
+            console.log("CATASTROPHE!!! THE PLAYER LOST!");
+            break;
+        } else {
+            console.log(`Player score: ${humanScore}\nComputer Score: ${computerScore}`)
+            playerWinsif()
+        }
+
+    }
+}
