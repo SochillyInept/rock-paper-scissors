@@ -20,12 +20,14 @@ function capitalize(text){
     return firstLetter.toUpperCase() + otherLetters.toLowerCase();
 }
 
+//Creating global action variable to refer to in endgame prompt to obtain getHumanChoice outcome without calling the variable
+let action;
 
 // Get human choice
 
 function getHumanChoice(){
     let choice = prompt("Rock, Paper, or Scissors?");
-    let action = choice;
+    action = choice;
 
     if (action == null){
         return; 
@@ -92,9 +94,9 @@ function playGame(){
 
 // If you hit  cancel the option it does not go to the else statement it will make choice null making action null, making humanChoice null. The issue is that I try to capitalize the outputs and .toUpperCase and similar things on a null object is a type error. So I going to create an endGame function for this
 function endGame(){
-    let endGame = getHumanChoice;
+    let endGame = action;
 
-    if (endGame == null){
+    if (endGame === null){
         return true;
     }
 }
