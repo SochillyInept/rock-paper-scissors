@@ -76,25 +76,40 @@ function playerWinsif(){
 //Function to play game
 
 function playGame(){
-    for (let i = 0; i < 4; i++){
+    for (let i = 0; i < 5; i++){
         let terminateGame = endGame();
         if (terminateGame == true){
             console.log("Game Terminated")
             action = undefined;
             break;
         } else if (humanScore == 3) {
-            console.log("Congrats Player Wins the best of 5!");
+            console.log("CONGRATS!!! Player wins the best of 5!");
             break;
         } else if (computerScore == 3){
-            console.log("CATASTROPHE!!! THE PLAYER LOST!");
+            console.log("CATASTROPHE!!! Player lost the best of 5!");
             break;
         } else {
             console.log(`Player score: ${humanScore}\nComputer Score: ${computerScore}`)
             playerWinsif()
         }
-
     }
-}
+
+//When loop ends and winner has not been 
+
+    if (humanScore == computerScore){
+        console.log("BIG DRAW!! 5 rounds have passed");
+        humanScore = 0;
+        computerScore = 0;
+        return;
+    } else {greaterScore()}
+
+    function greaterScore (){
+        (humanScore > computerScore)? console.log("CONGRATS!!! Player wins the best of 5!") : (humanScore < computerScore)? console.log("CATASTROPHE!!! Player lost the best of 5!") : false
+    }
+    humanScore = 0;
+    computerScore = 0;
+    }
+
 
 // If you hit  cancel the option it does not go to the else statement it will make choice null making action null, making humanChoice null. The issue is that I try to capitalize the outputs and .toUpperCase and similar things on a null object is a type error. So I going to create an endGame function for this
 function endGame(){
